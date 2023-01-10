@@ -8,6 +8,8 @@ import { BlogService } from '../services/blog.service';
 })
 export class HomeComponent implements OnInit {
   blogData: Array<any> = [];
+  pageSize = 8;
+  page = 13;
 
   private blogService = inject(BlogService);
 
