@@ -9,6 +9,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { BaseService } from './services/base.service';
 import { HttpClientModule } from '@angular/common/http';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { HttpClientModule } from '@angular/common/http';
     MatCardModule,
     MatButtonModule,
     HttpClientModule,
+    NgbModule,
   ],
   providers: [BaseService],
   bootstrap: [AppComponent]
