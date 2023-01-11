@@ -7,15 +7,19 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
   styleUrls: ['./blog-diaolog.component.scss']
 })
 export class BlogDiaologComponent {
+  isUpdate: boolean = false;
   private data: any = inject(MAT_DIALOG_DATA);
   private dialogRef = inject(MatDialogRef<BlogDiaologComponent>)
   constructor() {
-    debugger;
-    if (this.data) {
+    if (this.data.isUpdate) {
+      this.isUpdate = true;
 
     } else {
 
     }
+  }
+  close() {
+    this.dialogRef.close();
   }
 
 

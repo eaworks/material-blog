@@ -10,6 +10,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { BaseService } from './services/base.service';
 import { HttpClientModule } from '@angular/common/http';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatDividerModule } from '@angular/material/divider';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { BlogDiaologComponent } from './home/blog-diaolog/blog-diaolog.component';
 
@@ -27,7 +28,8 @@ import { BlogDiaologComponent } from './home/blog-diaolog/blog-diaolog.component
     MatButtonModule,
     HttpClientModule,
     NgbModule,
-    MatDialogModule
+    MatDialogModule,
+    MatDividerModule
   ],
   providers: [BaseService],
   bootstrap: [AppComponent]
