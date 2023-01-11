@@ -8,6 +8,9 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 })
 export class BlogDiaologComponent {
   isUpdate: boolean = false;
+  imageUrl: string = "";
+  title: string = "";
+  body: string = "";
   private data: any = inject(MAT_DIALOG_DATA);
   private dialogRef = inject(MatDialogRef<BlogDiaologComponent>)
   constructor() {
@@ -15,7 +18,9 @@ export class BlogDiaologComponent {
       this.isUpdate = true;
 
     } else {
-
+      this.imageUrl = this.data.blog.imageId.toString();
+      this.title = this.data.blog.title;
+      this.body = this.data.blog.body;
     }
   }
   close() {
