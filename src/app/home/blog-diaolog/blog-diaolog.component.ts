@@ -1,6 +1,7 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { BlogService } from 'src/app/services/blog.service';
 import { CommentService } from 'src/app/services/comment.service';
 
 @Component({
@@ -16,6 +17,7 @@ export class BlogDiaologComponent implements OnInit {
   commentData: any;
 
   private commentService = inject(CommentService);
+  private blogService = inject(BlogService);
   private data: any = inject(MAT_DIALOG_DATA);
   private dialogRef = inject(MatDialogRef<BlogDiaologComponent>)
 
@@ -45,7 +47,15 @@ export class BlogDiaologComponent implements OnInit {
   close() {
     this.dialogRef.close();
   }
-  onSubmit() { }
+  onSubmit() {
+    const request = {
+      title: this.form.get('title')?.value,
+      body: this.form.get('body')?.value,
+      imageId: this.data.blog.imageId,
+      userId: this.data.blog.userId,
+    }
+    this.blogService.updatePosts(this.data.blog.id, request).subscribe(res => { this.dialogRef.close(); })
+  }
 
 
 }

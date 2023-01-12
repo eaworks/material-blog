@@ -13,6 +13,6 @@ export class BlogService extends BaseService {
     return this.base.getReq('/posts');
   }
   public updatePosts(id: any, data: any) {
-    return this.base.putReq('/posts' + id, data);
+    return this.base.putReq('/posts/' + id, data);
   }
 }

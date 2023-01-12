@@ -21,7 +21,11 @@ export class HomeComponent implements OnInit {
   openDialog(element: any, vieworupdate: any) {
     const dialogRef = this.dialog.open(BlogDiaologComponent, {
       data: { blog: element, isUpdate: vieworupdate }
-    })
+    });
+    dialogRef.afterClosed().subscribe((res) => { this.getBlogList(); })
+  }
+  getBlogList() {
+    this.blogService.getPosts().subscribe((res) => { this.blogData = res; })
   }
 
 }
