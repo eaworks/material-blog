@@ -1,4 +1,5 @@
 import { Component, inject, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { CommentService } from 'src/app/services/comment.service';
 
@@ -13,12 +14,22 @@ export class BlogDiaologComponent implements OnInit {
   title: string = "";
   body: string = "";
   commentData: any;
+
   private commentService = inject(CommentService);
   private data: any = inject(MAT_DIALOG_DATA);
   private dialogRef = inject(MatDialogRef<BlogDiaologComponent>)
+
+  form = new FormGroup({
+    title: new FormControl(null, [Validators.required]),
+    body: new FormControl(null, [Validators.required]),
+  })
   constructor() {
     if (this.data.isUpdate) {
       this.isUpdate = true;
+      this.form.patchValue({
+        title: this.data.blog.title,
+        body: this.data.blog.body,
+      })
 
     } else {
       this.imageUrl = this.data.blog.imageId.toString();
@@ -34,6 +45,7 @@ export class BlogDiaologComponent implements OnInit {
   close() {
     this.dialogRef.close();
   }
+  onSubmit() { }
 
 
 }

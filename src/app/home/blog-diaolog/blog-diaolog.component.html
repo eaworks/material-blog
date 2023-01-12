@@ -6,7 +6,7 @@
 
         <button mat-button style="font-size: 24px;" (click)="close()">x</button>
     </div>
-    <mat-divider></mat-divider>
+    <mat-divider class="mb-2"></mat-divider>
     <div *ngIf="!isUpdate">
         <div class="row mb-2">
             <div class="col-md-6" style="padding-left: 0;">
@@ -29,5 +29,26 @@
             </div>
         </div>
     </div>
-    <div></div>
+    <div *ngIf="isUpdate">
+        <form [formGroup]="form" style="min-width: 400px;">
+            <div class="container">
+                <div class="row">
+                    <mat-form-field>
+                        <mat-label>Blog Basligi</mat-label>
+                        <input matInput formControlName="title">
+                    </mat-form-field>
+                </div>
+                <div class="row">
+                    <mat-form-field>
+                        <mat-label>Blog Icerigi</mat-label>
+                        <textarea matInput formControlName="body" cols="40" rows="10"></textarea>
+                    </mat-form-field>
+                </div>
+            </div>
+            <div>
+                <button [disabled]="!form.valid" mat-raised-button color="primary"
+                    (click)="onSubmit()">Guncelle</button>
+            </div>
+        </form>
+    </div>
 </div>
